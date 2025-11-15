@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>〇〇農園 | 名刺がわりサイト</title>
+  <meta name="description" content="〇〇農園のコーポレート・ランディング（名刺がわり）テンプレート" />
+  <!--
+    Icons by Heroicons (https://heroicons.com/)
+    Copyright (c) 2020 Tailwind Labs, Inc.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the “Software”), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+  -->
+  <style>
+    /* ------------------------------
+       テーマ用CSS変数（ナチュラル）
+       ------------------------------ */
+    :root {
+      --color-brand: #2E7D32;   /* メイン */
+      --color-accent: #AED581;  /* アクセント */
+      --color-bg: #FAFAF5;      /* 背景 */
+      --color-text: #212121;    /* テキスト */
+      --color-muted: #E8E5DA;   /* 枠/薄背景 */
+      --color-card: #FFFFFF;    /* カード */
+    }
+
+    /* ------------------------------
+       ベーススタイル
+       ------------------------------ */
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.6;
+    }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    a { color: var(--color-brand); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ------------------------------
+       ヘッダー
+       ------------------------------ */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in hsl, var(--color-bg) 85%, #fff 15%);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+    .brand-mark { width: 32px; height: 32px; border-radius: 10px; background: var(--color-brand); }
+    nav { display: none; gap: 20px; font-size: 14px; }
+    @media (min-width: 768px){ nav { display: flex; } }
+    .cta { display: none; }
+    @media (min-width: 640px){ .cta { display: inline-block; } }
+    .btn, .btn-outline {
+      padding: 10px 16px; border-radius: 12px; font-weight: 600; font-size: 14px; display: inline-block;
+    }
+    .btn { background: var(--color-brand); color: #fff; border: 1px solid var(--color-brand); }
+    .btn:hover { opacity: .9; }
+    .btn-outline { background: transparent; color: var(--color-brand); border: 1px solid var(--color-brand); }
+    .btn-outline:hover { background: var(--color-brand); color: #fff; }
+
+    /* ------------------------------
+       ヒーロー
+       ------------------------------ */
+    .hero { padding: 64px 0 80px; }
+    @media (max-width: 900px){ .hero { padding-top: 40px; } }
+    .hero-grid { display: grid; gap: 32px; align-items: center; }
+    @media (min-width: 900px){ .hero-grid { grid-template-columns: 1.1fr 1fr; } }
+    .badge { color: var(--color-brand); letter-spacing: .2em; font-size: 12px; font-weight: 700; }
+    .title { font-size: clamp(28px, 5vw, 40px); line-height: 1.2; margin: 8px 0 0; font-weight: 800; }
+    .title span { color: var(--color-brand); }
+    .hero-note { color: color-mix(in hsl, var(--color-text) 70%, #000 30%); margin-top: 14px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .hero-points { display: flex; gap: 18px; margin-top: 18px; font-size: 14px; color: #0008; flex-wrap: wrap; }
+
+    .hero-visual {
+      border: 1px solid var(--color-muted);
+      border-radius: 24px; height: 320px; display: grid; place-items: center;
+      background: linear-gradient(135deg, color-mix(in hsl, var(--color-brand) 18%, #fff 82%), color-mix(in hsl, var(--color-accent) 22%, #fff 78%));
+      text-align: center; padding: 24px; color: #0008;
+    }
+
+    /* ------------------------------
+       セクション共通
+       ------------------------------ */
+    section { padding: 56px 0; }
+    .section-title { font-size: clamp(20px, 3.8vw, 32px); font-weight: 800; margin: 0 0 16px; }
+    .section-lead { color: #0008; margin-bottom: 28px; }
+
+    /* ------------------------------
+       About（左右2カラム）
+       ------------------------------ */
+    .split { display: grid; gap: 24px; }
+    @media (min-width: 900px){ .split { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    .card { background: var(--color-card); border: 1px solid var(--color-muted); border-radius: 16px; padding: 20px; }
+
+    /* ------------------------------
+       Services（3カラムカード）
+       ------------------------------ */
+    .grid-3 { display: grid; gap: 16px; }
+    @media (min-width: 720px){ .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+    .service h3 { margin: 10px 0 6px; font-size: 16px; }
+    .service p { color: #0008; font-size: 14px; }
+    .icon { width: 28px; height: 28px; color: var(--color-brand); }
+
+    /* ------------------------------
+       Works（グリッド）
+       ------------------------------ */
+    .works { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 900px){ .works { grid-template-columns: repeat(3, 1fr); } }
+    .work-thumb { aspect-ratio: 4/3; border: 1px solid var(--color-muted); border-radius: 12px; background: #fff; display: grid; place-items: center; color: #999; font-size: 13px; }
+
+    /* ------------------------------
+       Company（表）
+       ------------------------------ */
+    table.company { width: 100%; border-collapse: collapse; background: var(--color-card); border: 1px solid var(--color-muted); border-radius: 12px; overflow: hidden; }
+    .company th, .company td { padding: 12px 14px; border-bottom: 1px solid var(--color-muted); text-align: left; }
+    .company th { width: 28%; background: color-mix(in hsl, var(--color-bg) 70%, #fff 30%); font-weight: 600; }
+    .company tr:last-child th, .company tr:last-child td { border-bottom: none; }
+    .flex { display: flex;}
+    .slash { margin-inline: 5px;}
+
+    /* ------------------------------
+       フッター
+       ------------------------------ */
+    footer { padding: 28px 0; border-top: 1px solid var(--color-muted); color: #0008; font-size: 14px; }
+    .footer-grid { display: grid; gap: 10px; }
+    @media (min-width: 720px){ .footer-grid { grid-template-columns: 1fr auto; align-items: center; } }
+    .sns { display: flex; gap: 10px; }
+    .sns a { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--color-muted); border-radius: 10px; color: var(--color-text); }
+    .credit { font-size: 12px; color: #0006; }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <span>〇〇農園</span>
+      </div>
+      <nav>
+        <a href="#about">農園について</a>
+        <a href="#services">取り扱いとサービス</a>
+        <a href="#works">季節のようす</a>
+        <a href="#company">農園概要</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">LOCAL FARM</div>
+          <h1 class="title">畑から食卓へ、<span>まっすぐに。</span></h1>
+          <p class="hero-note">〇〇農園は、季節の野菜や果物を少量多品目で育て、直売・出荷・体験イベントを通じて地域とつながる小規模農園です。</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact">直売・卸の相談をする</a>
+            <a class="btn-outline" href="#services">取り扱いを見る</a>
+          </div>
+          <div class="hero-points">
+            <span>● 朝どり直売</span>
+            <span>● 農薬・肥料使用の明記</span>
+            <span>● 収穫体験・見学可</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div>
+            <div>畑や収穫の写真をここに</div>
+            <div style="font-size:12px;margin-top:6px;">（任意の写真・図版に差し替え）</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">農園について</h2>
+        <p class="section-lead">土づくりを大切に、旬のおいしさをそのままにお届けします。</p>
+        <div class="split">
+          <div class="card">
+            <h3>栽培方針</h3>
+            <p>輪作・草生栽培を取り入れ、化学肥料や農薬の使用を最小限に抑えます。堆肥や有機質肥料で土の力を活かします。</p>
+          </div>
+          <div class="card">
+            <h3>取り組み</h3>
+            <ul>
+              <li>朝どり・低温保管で鮮度を保持</li>
+              <li>育て方・使用資材の開示</li>
+              <li>地域イベントや体験の開催</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">取り扱いとサービス</h2>
+        <p class="section-lead">季節の出荷・直売、飲食店さま向けの卸、体験イベントなどを行っています。</p>
+        <div class="grid-3">
+          <div class="card service">
+            <!-- Heroicons: Bolt -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m14.615 4.5-11.05 11.05a1.125 1.125 0 0 0 .796 1.92H9.75L8.25 21l11.05-11.05a1.125 1.125 0 0 0-.796-1.92H14.25L15.75 4.5h-1.135Z"/></svg>
+            <h3>季節の農産物</h3>
+            <p>トマト／葉物／根菜など、露地と簡易ハウスで育てています。旬の味をお楽しみください。</p>
+          </div>
+          <div class="card service">
+            <!-- Heroicons: Sparkles -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a2.25 2.25 0 0 0-1.59-1.59L3.75 13.5l2.847-.813a2.25 2.25 0 0 0 1.59-1.59L9 8.25l.813 2.847a2.25 2.25 0 0 0 1.59 1.59l2.847.813-2.847.814a2.25 2.25 0 0 0-1.59 1.59ZM18.904 8.813 18 12l-.904-3.188a2.25 2.25 0 0 0-1.608-1.608L12 6l3.188-.904a2.25 2.25 0 0 0 1.608-1.608L18 0l.904 3.188a2.25 2.25 0 0 0 1.608 1.608L24 6l-3.188.904a2.25 2.25 0 0 0-1.608 1.608Z"/></svg>
+            <h3>飲食店・小売向け卸</h3>
+            <p>少量多品目・規格外のご相談も歓迎。定期便・季節セットのご提案が可能です。</p>
+          </div>
+          <div class="card service">
+            <!-- Heroicons: Check Badge -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M6.75 2.25h10.5A2.25 2.25 0 0 1 19.5 4.5v15a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5v-15A2.25 2.25 0 0 1 6.75 2.25Z"/></svg>
+            <h3>直売・体験イベント</h3>
+            <p>畑の見学や収穫体験、食育向けのミニ講座も開催しています（要予約）。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works">
+      <div class="container">
+        <h2 class="section-title">季節のようす</h2>
+        <p class="section-lead">畑や収穫の様子をご紹介します（写真はダミー）。</p>
+        <div class="works">
+          <div class="work-thumb">春：葉物の収穫</div>
+          <div class="work-thumb">夏：トマトの旬</div>
+          <div class="work-thumb">秋：根菜の仕込み</div>
+          <div class="work-thumb">冬：土づくり</div>
+          <div class="work-thumb">イベント：収穫体験</div>
+          <div class="work-thumb">直売所の様子</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company -->
+    <section id="company">
+      <div class="container">
+        <h2 class="section-title">農園概要</h2>
+        <table class="company">
+          <tr><th>農園名</th><td>〇〇農園</td></tr>
+          <tr><th>代表者</th><td>山田 太郎</td></tr>
+          <tr><th>所在地</th><td>〒000-0000 ○○県○○市○○町</td></tr>
+          <tr><th>電話番号</th><td>00-0000-0000</td></tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td>
+              <a href="mailto:example@example.com">example@example.com</a>
+            </td>
+          </tr>
+          <tr>
+            <th>SNS</th>
+            <td class="flex">
+              <a href="https://x.com/" target="_blank" class="sns">X</a>
+              <div class="slash">/</div>
+              <a href="https://www.instagram.com/" target="_blank" class="sns">Instagram</a>
+            </td></tr>
+          <tr><th>圃場</th><td>約1.0ha（露地／簡易ハウス）</td></tr>
+          <tr><th>主な品目</th><td>トマト、じゃがいも、葉物、にんじん ほか</td></tr>
+          <tr><th>出荷先</th><td>地元直売所、飲食店、個人宅配（季節セット）</td></tr>
+          <tr><th>取得認証</th><td>（例）JGAP準拠／特別栽培農産物（予定）</td></tr>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div>© 2025 〇〇農園 All Rights Reserved.</div>
+      </div>
+      <div class="sns">
+        <a href="#" aria-label="X(Twitter)">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
